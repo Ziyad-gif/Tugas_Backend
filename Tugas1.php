@@ -11,14 +11,15 @@ class Animal
     function index()
     {
         foreach ($this->animals as $animal) {
-            echo "Jumlah " . $animal . " <br>";
+            echo $animal . " ";
         }
     }
 
     function store($data)
     {
 
-        array_push($this->animals = $data);
+        array_push($this->animals, $data);
+        print_r($data);
     }
     function update($index, $data)
     {
@@ -26,28 +27,32 @@ class Animal
     }
     function destroy($index)
     {
+
         unset($this->animals[$index]);
     }
 }
 $animal = new Animal(['ayam', 'beruang']);
 
-echo "menampilkan binatang ";
+echo "menampilkan binatang " . "<br>";
 
 $animal->index();
+echo "<br>";
 
 // masukin nilai
-echo "nilai setelah di isi";
-$animal->store("ikan");
+echo "nilai setelah di isi" . "<br>";
+$animal->store(' ikan ');
+
 $animal->index();
+echo "<br>";
 // update nilai
 
-echo "setelah di update ";
-$animal->update(0, "kucing");
+echo "setelah di update " . "<br>";
+$animal->update(0, 'kucing');
 
 
 // hapus nilai
 
 
-echo "setelah dihapus";
+echo "setelah dihapus" . "<br>";
 $animal->destroy(1);
 $animal->index();

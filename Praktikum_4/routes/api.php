@@ -19,7 +19,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::get("\animals",[animalController::class,'index']);
+Route::get('/zs', function () {
+    echo "memcacheredis";
 
+});
 Route::post("\animals",[animalController::class,'store']);
 Route::put("\animals\{id}",[animalController::class,'put']);
 Route::delete("\animals\{id}",[animalController::class],'destroy');

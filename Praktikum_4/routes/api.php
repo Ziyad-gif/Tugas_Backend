@@ -18,8 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("\animal",[animalController::class,'index']);
+Route::get("\animals",[animalController::class,'index']);
 
-Route::post("\animal",[animalController::class,'store']);
-Route::put("\animal\{id}",[animalController::class,'put']);
-Route::delete("\animal\{id}",[animalController::class],'destroy');
+Route::post("\animals",[animalController::class,'store']);
+Route::put("\animals\{id}",[animalController::class,'put']);
+Route::delete("\animals\{id}",[animalController::class],'destroy');

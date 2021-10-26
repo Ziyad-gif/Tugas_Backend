@@ -8,13 +8,13 @@ class animalController extends Controller
 {
     public $animals =["ayam","bebek"];
 
-    function index(Request $request){
-        foreach($animals as $animal){
-            echo $animal." ";
+    function index(){
+        foreach($this->animals as $animal){
+            echo $animal."<br> ";
         }
     function store(Request $request){
         array_push($this->animals,$request->nama);
-        this->index();
+        $this->index();
     }
     function update(Request $request,$id){
         echo "mengedit id :$id";

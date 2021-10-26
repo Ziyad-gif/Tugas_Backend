@@ -17,4 +17,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::view("/animals",[animalController::class,"index"]);
+Route::get('/animals', function () {
+    echo "menampilkan data animal";
+
+});
+Route::post('/animals', function () {
+    echo "menampilkan data animal";
+
+});

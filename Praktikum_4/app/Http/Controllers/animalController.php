@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class animalController extends Controller
+class AnimalController extends Controller
 {
     public $animals =["ayam","bebek"];
     public function index(){

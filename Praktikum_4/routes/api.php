@@ -2,7 +2,8 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use app\Http\Controllers\animalController;
+use App\Http\Controllers\AnimalController;
+use App\Http\Controllers\StudentController;
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -18,8 +19,9 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get("\animals",[animalController::class,'index']);
-Route::get("\an",[animal::class],"index");
-Route::post("\animals",[animalController::class,'store']);
-Route::put("\animals\{id}",[animalController::class,'put']);
-Route::delete("\animals\{id}",[animalController::class],'destroy');
+Route::get("/animals",[AnimalController::class,'index']);
+Route::get("/an",[animal::class],"index");
+Route::post("/animals",[AnimalController::class,'store']);
+Route::put("/animals\{id}",[AnimalController::class,'put']);
+Route::delete("/animals\{id}",[AnimalController::class,'destroy']);
+Route::get("/hello",[StudentController::class,'index']);

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Transactio;
+use Illuminate\Database\QueryException;
 use Illuminate\Support\Facades\Validator;
 
 use Symfony\Component\HttpFoundation\Response;
@@ -39,6 +40,23 @@ class TransactiosController extends Controller
             'type' =>['required','in:expense,revenue']
 
         ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(),
+            Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        try{
+            $transactio = Transactio::create($request->all());
+            $response=[
+                'message' =>"Transactio dibuat",
+                'data' =>$transactio
+            ];
+        }catch(QueryException $e){
+            return response()->json([
+            'message' =>"failed ".$e->errorInfo
+            ]);
+        }
     }
 
     /**
@@ -62,7 +80,32 @@ class TransactiosController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $transactio = Transactio::findorFail($id);
+
+
+        $validator =Validator::make($request->all(),[
+            'title' =>('required'),
+            'amount' =>['required','numeric'],
+            'type' =>['required','in:expense,revenue']
+
+        ]);
+
+        if($validator->fails()){
+            return response()->json($validator->errors(),
+            Response::HTTP_UNPROCESSABLE_ENTITY);
+        }
+
+        try{
+            $transactio = Transactio::create($request->all());
+            $response=[
+                'message' =>"Transactio dibuat",
+                'data' =>$transactio
+            ];
+        }catch(QueryException $e){
+            return response()->json([
+            'message' =>"failed ".$e->errorInfo
+            ]);
+        }
     }
 
     /**

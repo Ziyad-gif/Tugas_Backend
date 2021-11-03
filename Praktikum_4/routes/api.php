@@ -26,5 +26,14 @@ Route::post("/animals",[AnimalController::class,'store']);
 Route::put("/animals\{id}",[AnimalController::class,'put']);
 Route::delete("/animals\{id}",[AnimalController::class,'destroy']);
 Route::get("/hello",[StudentController::class,'index']);
+Route::get("/hello/{id}",[StudentController::class,'show']);
+
+Route::post("/hello",[StudentController::class,'store']);
+Route::put("/hello/{id}",[StudentController::class,'update']);
+Route::delete('hello/{id}',[StudentController::class,'destroy']);
+
 
 Route::get("/transaksi",[TransactiosController::class,'index']);
+Route::post("/transaksi",[TransactiosController::class,'store']);
+
+

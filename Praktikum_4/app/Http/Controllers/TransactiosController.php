@@ -67,7 +67,14 @@ class TransactiosController extends Controller
      */
     public function show($id)
     {
-        //
+        $transactio = Transactio::findorFail($id);
+
+        $response =[
+            'message' =>"menampilkan transaksi",
+            'data' =>$transactio
+        ];
+        return response()->json($response,Response::HTTP_OK);
+
     }
 
 
@@ -96,11 +103,12 @@ class TransactiosController extends Controller
         }
 
         try{
-            $transactio = Transactio::create($request->all());
+            $transactio->update($request->all());
             $response=[
-                'message' =>"Transactio dibuat",
+                'message' =>"Transactio diupdate",
                 'data' =>$transactio
             ];
+            return response()->json($response,Response::HTTP_OK);
         }catch(QueryException $e){
             return response()->json([
             'message' =>"failed ".$e->errorInfo
@@ -116,6 +124,22 @@ class TransactiosController extends Controller
      */
     public function destroy($id)
     {
-        //
-    }
+        $transactio = Transactio::findorFail($id);
+
+
+
+
+        try{
+            $transactio->delete();
+            $response=[
+                'message' =>"Transactio diupdate",
+                'data' =>$transactio
+            ];
+            return response()->json($response,Response::HTTP_OK);
+        }catch(QueryException $e){
+            return response()->json([
+            'message' =>"failed ".$e->errorInfo
+            ]);
+        }
+}
 }

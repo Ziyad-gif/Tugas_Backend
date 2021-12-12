@@ -35,5 +35,8 @@ Route::delete('hello/{id}',[StudentController::class,'destroy']);
 
 Route::get("/transaksi",[TransactiosController::class,'index']);
 Route::post("/transaksi",[TransactiosController::class,'store']);
+Route::put("/transaksi/{id}",[TransactiosController::class,'update']);
+Route::get("/transaksi/{id}",[TransactiosController::class,'show']);
+Route::delete("/transaksi/{id}",[TransactiosController::class,'destroy']);
 
 

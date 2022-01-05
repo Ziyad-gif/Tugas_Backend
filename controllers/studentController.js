@@ -1,15 +1,15 @@
-const students = require("../data/student")
+const students = require("../model/Student");
 class studentController{
-    index(req,res){
+    async index(req,res){
         const data ={
             message:"menampilkan semua data student",
             data:student,
         };
         res.json(data)
     }
-    store(req,res){
-        const {nama} = req.body;
-        student.push = nama;
+    async store(req,res){
+        const {nama,nim,email,jurusan,create_at,update_at} = req.body;
+        Student.create(nama,nim,email,jurusan,create_at,update_at);
         const data={
             message :`menambahkan data student ${nama}`,
             data:student,
@@ -17,9 +17,10 @@ class studentController{
         res.json(data);
     }
     update(req,res){
+        const {id} = req.body;
         const {nama} = req.body;
         student.push(nama);
-        student[id] = nama;
+        Student[id] = nama;
         const data = {
             message: `mengupdate data student id :${id} nama:${nama}`,
             data: student,

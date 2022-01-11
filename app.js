@@ -1,5 +1,6 @@
 const express = require("express");
 const router = require("./routes/api");
+const db = require('./config/database');
 const port = 3000
 const app = express();
 app.use(express.json());
